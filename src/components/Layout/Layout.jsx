@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Container, NavLinkList } from './Layout.styled';
 
@@ -29,7 +29,9 @@ function Layout() {
           Movies
         </NavLink>
       </NavLinkList>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </Container>
   );
 }

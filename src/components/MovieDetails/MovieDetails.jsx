@@ -1,7 +1,7 @@
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 import React, { useEffect, useState } from 'react';
-import { NavLink, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   Details,
   DetailsNav,
@@ -109,7 +109,6 @@ function MovieDetails() {
           </NavLink>
         </DetailsNav>
       )}
-
       {showCast && <Cast movieId={movieId} />}
       {showReviews && <Reviews movieId={movieId} />}
     </div>

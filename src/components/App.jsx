@@ -15,55 +15,13 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <Suspense fallback={<Loader />}>
-                <Home />
-              </Suspense>
-            }
-          />
-          <Route
-            path="movies"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Movies />
-              </Suspense>
-            }
-          />
-          <Route
-            path="movies/:movieId/*"
-            element={
-              <Suspense fallback={<Loader />}>
-                <MovieDetails />
-              </Suspense>
-            }
-          >
-            <Route
-              path="cast"
-              element={
-                <Suspense fallback={<Loader />}>
-                  <Cast />
-                </Suspense>
-              }
-            />
-            <Route
-              path="reviews"
-              element={
-                <Suspense fallback={<Loader />}>
-                  <Reviews />
-                </Suspense>
-              }
-            />
+          <Route index element={<Home />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:movieId/*" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<Loader />}>
-                <NotFound />
-              </Suspense>
-            }
-          />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>
