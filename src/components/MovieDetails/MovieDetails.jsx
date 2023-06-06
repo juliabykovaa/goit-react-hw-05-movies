@@ -68,7 +68,7 @@ function MovieDetails() {
             <h2>Overview</h2>
             <Details>{movie.overview}</Details>
             <h2>Genres</h2>
-            <Details>{movie.genres.map(genre => genre.name).join(',')}</Details>
+            <Details>{movie.genres.map(genre => genre.name).join(', ')}</Details>
           </div>
         </MovieCard>
       ) : (
