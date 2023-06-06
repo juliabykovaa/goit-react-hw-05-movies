@@ -1,7 +1,7 @@
 import { TrendingItem, TrendingList } from 'components/Home/Home.styled';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { Form, Input, SearchBtn } from './Movies.styled';
+import { Error, Form, Input, SearchBtn } from './Movies.styled';
 import Loader from 'components/Loader/Loader';
 
 function Movies() {
@@ -63,7 +63,7 @@ function Movies() {
         />
         <SearchBtn type="submit">Search</SearchBtn>
       </Form>
-      {filter && moviesList.length ? (
+      {filter && moviesList.length  ? (
         <TrendingList>
           {moviesList.map(
             movie =>
@@ -86,10 +86,9 @@ function Movies() {
           )}
         </TrendingList>
       ) : (
-        <div></div>
+        <Error>No Films Found</Error>
       )}
       {isLoading && <Loader />}{' '}
-
     </>
   );
 }

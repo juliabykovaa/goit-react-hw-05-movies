@@ -1,9 +1,8 @@
+import { Error } from 'components/Movies/Movies.styled'
 import React from 'react'
 
 function NotFound() {
-  return (
-    <h1>404 Page Not Found</h1>
-  )
+  return <Error>404 Page Not Found</Error>;
 }
 
 export default NotFound

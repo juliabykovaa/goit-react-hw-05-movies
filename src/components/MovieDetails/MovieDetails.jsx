@@ -1,7 +1,7 @@
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   Details,
   DetailsNav,
@@ -9,6 +9,7 @@ import {
   ReturnBtn,
 } from './MovieDetails.styled';
 import Loader from 'components/Loader/Loader';
+import NotFound from 'components/NotFound/NotFound';
 
 function MovieDetails() {
   const { movieId } = useParams();
@@ -72,7 +73,7 @@ function MovieDetails() {
           </div>
         </MovieCard>
       ) : (
-        <p>No movie found</p>
+        <NotFound/>
       )}
 
       {movie.hasOwnProperty('id') && (

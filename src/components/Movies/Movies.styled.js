@@ -47,4 +47,9 @@ export const SearchBtn = styled.button`
   }
 `;
 
+export const Error = styled.h1`
+display: flex;
+justify-content: center;
+padding: 40px;`
+
 

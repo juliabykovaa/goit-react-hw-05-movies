@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 
-export const Header = styled.h2`
+export const Header = styled.h1`
 
 `
 
