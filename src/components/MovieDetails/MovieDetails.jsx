@@ -1,6 +1,6 @@
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   Details,
@@ -69,11 +69,13 @@ function MovieDetails() {
             <h2>Overview</h2>
             <Details>{movie.overview}</Details>
             <h2>Genres</h2>
-            <Details>{movie.genres.map(genre => genre.name).join(', ')}</Details>
+            <Details>
+              {movie.genres.map(genre => genre.name).join(', ')}
+            </Details>
           </div>
         </MovieCard>
       ) : (
-        <NotFound/>
+        <NotFound />
       )}
 
       {movie.hasOwnProperty('id') && (
@@ -109,8 +111,10 @@ function MovieDetails() {
           </NavLink>
         </DetailsNav>
       )}
-      {showCast && <Cast movieId={movieId} />}
-      {showReviews && <Reviews movieId={movieId} />}
+      <Suspense fallback={<Loader />}>
+        {showCast && <Cast movieId={movieId} />}
+        {showReviews && <Reviews movieId={movieId} />}
+      </Suspense>
     </div>
   );
 }

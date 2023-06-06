@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Container, NavLinkList } from './Layout.styled';
+import Loader from 'components/Loader/Loader';
 
 function Layout() {
   return (
@@ -29,7 +30,7 @@ function Layout() {
           Movies
         </NavLink>
       </NavLinkList>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </Container>
