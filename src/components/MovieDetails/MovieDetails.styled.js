@@ -21,3 +21,7 @@ padding: 10px 20px;
   cursor: pointer;
   fontSize: 16px;
   margin-top: 25px;`;
+
+export const DetailsNav = styled.div`
+  display: flex;
+  justify-content: center`;

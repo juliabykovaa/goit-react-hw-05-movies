@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CastItem, CastList } from './Cast.styled';
+import Loader from 'components/Loader/Loader';
 
 function Cast({ movieId }) {
   const [cast, setCast] = useState([]);
@@ -37,14 +38,14 @@ function Cast({ movieId }) {
                 </CastItem>
               );
             }
-            return null; 
+            return null;
           })}
         </CastList>
       </div>
     );
   }
 
-  return <div>Loading...</div>;
+  return <Loader />;
 }
 
 export default Cast;

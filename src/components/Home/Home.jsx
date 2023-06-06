@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Container, Header, TrendingItem, TrendingList } from './Home.styled';
 
-
 const Home = () => {
   const [films, setFilms] = useState([]);
   const homeLocation = useLocation();

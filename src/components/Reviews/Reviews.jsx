@@ -20,7 +20,6 @@ function Reviews({ movieId }) {
 
     fetchMovieDetails();
   }, [movieId]);
-  console.log('reviews', reviews);
   if (reviews.length > 0) {
     return (
       <div>

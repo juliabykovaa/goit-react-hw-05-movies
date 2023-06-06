@@ -2,7 +2,7 @@ import { TrendingItem, TrendingList } from 'components/Home/Home.styled';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Form, Input, SearchBtn } from './Movies.styled';
-import { ReturnBtn } from 'components/MovieDetails/MovieDetails.styled';
+import Loader from 'components/Loader/Loader';
 
 function Movies() {
   const [moviesList, setMoviesList] = useState([]);
@@ -12,10 +12,13 @@ function Movies() {
   const filter = searchParams.get('filter') || '';
 
   const [inputValue, setInputValue] = useState(filter);
-  const [isSubmitted, setIsSubmitted] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(true); 
+  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
     const fetchFilmsBySearch = async () => {
+      setIsLoading(true); 
+
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/search/movie?api_key=7e0d37982bd2bc72dd4c2ebad432d351&query=${filter}&include_adult=false&language=en-US&page=1`
@@ -25,6 +28,8 @@ function Movies() {
       } catch (error) {
         console.error(error);
       }
+
+      setIsLoading(false); 
     };
 
     if (isSubmitted && filter) {
@@ -32,10 +37,9 @@ function Movies() {
       setIsSubmitted(false);
     } else {
       setMoviesList([]);
-      setInputValue(filter)
+      setInputValue(filter);
     }
   }, [filter, isSubmitted]);
-
 
   const handleChange = ({ target: { value } }) => {
     setInputValue(value);
@@ -46,7 +50,6 @@ function Movies() {
     setSearchParams({ filter: inputValue });
     setIsSubmitted(true);
   };
-
 
   return (
     <>
@@ -60,7 +63,6 @@ function Movies() {
         />
         <SearchBtn type="submit">Search</SearchBtn>
       </Form>
-
       {filter && moviesList.length ? (
         <TrendingList>
           {moviesList.map(
@@ -86,16 +88,10 @@ function Movies() {
       ) : (
         <div></div>
       )}
+      {isLoading && <Loader />}{' '}
+
     </>
   );
 }
 
 export default Movies;
-
-
-
-
-
-
-
-
